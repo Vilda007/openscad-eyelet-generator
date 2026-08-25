@@ -325,27 +325,31 @@ module simple_s_eyelet() {
     tube_radius = wall_thickness / 2;
     step = 4; // Angular step in degrees
 
+    // Curve radius = inner_radius + tube_radius (so inner edge = inner_radius, outer = inner_radius + wall_thickness)
+    curve_r1 = inner_radius + tube_radius;
+    curve_r2 = second_inner_radius + tube_radius;
+
     // Convert percentage to sweep angle
     arc_1_angle = s_arc_1_pct / 100 * 360;
     arc_2_angle = s_arc_2_pct / 100 * 360;
 
     stepped_fillet_extrusion(height, bottom_edge_fillet, top_edge_fillet, fillet_steps)
     union() {
-        // Hook 1: curve to the left and up (center at [-inner_radius, 0])
+        // Hook 1: curve to the left and up (center at [-curve_r1, 0])
         for (i = [0 : step : arc_1_angle - step]) {
             hull() {
-                translate([-inner_radius + inner_radius * cos(i), inner_radius * sin(i)])
+                translate([-curve_r1 + curve_r1 * cos(i), curve_r1 * sin(i)])
                     circle(r = tube_radius);
-                translate([-inner_radius + inner_radius * cos(i + step), inner_radius * sin(i + step)])
+                translate([-curve_r1 + curve_r1 * cos(i + step), curve_r1 * sin(i + step)])
                     circle(r = tube_radius);
             }
         }
-        // Hook 2: curve to the right and down (center at [second_inner_radius, 0])
+        // Hook 2: curve to the right and down (center at [curve_r2, 0])
         for (i = [180 : step : 180 + arc_2_angle - step]) {
             hull() {
-                translate([second_inner_radius + second_inner_radius * cos(i), second_inner_radius * sin(i)])
+                translate([curve_r2 + curve_r2 * cos(i), curve_r2 * sin(i)])
                     circle(r = tube_radius);
-                translate([second_inner_radius + second_inner_radius * cos(i + step), second_inner_radius * sin(i + step)])
+                translate([curve_r2 + curve_r2 * cos(i + step), curve_r2 * sin(i + step)])
                     circle(r = tube_radius);
             }
         }
