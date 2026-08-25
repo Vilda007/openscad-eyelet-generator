@@ -2,9 +2,9 @@
 
 A parametric eyelet generator for 3D printing, designed for outdoor and camping gear. Compatible with [MakerWorld's Parametric Model Maker (PMM)](https://makerworld.com) — users can customize parameters directly on the model page.
 
-## Features
+## Eyelet Types
 
-Ten eyelet types, all parametric:
+![Eyelet Types](eyelet-types.png)
 
 | # | Type | Description |
 |---|------|-------------|
