@@ -19,6 +19,12 @@ A parametric eyelet generator for 3D printing, designed for outdoor and camping 
 | 9 | **Double D** | Ring split in half by a center dividing wall |
 | 10 | **Simple S** | S-shaped curve from two partial-circle arcs |
 
+### Printed Examples
+
+![Printed Eyelet 1](photo1.jpg)
+
+![Printed Eyelet 2](photo2.jpg)
+
 ## Parameters
 
 ### Dimensions
